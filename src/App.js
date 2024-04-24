@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react"
+import Header from "./components/Header"
+import SideBar from "./components/SideBar"
+import MainArea from "./components/MainArea"
+import Footer from "./components/Footer"
+import { useStyleAndLike } from './components/functions';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+  const {
+    myStyle,
+    setMyStyle,
+    like,
+    handleColorChange,
+    handleFontSizeChange,
+    handleLikeClick,
+    onlyTextChange
+  } = useStyleAndLike();
+
+  return (
+    <div className="grid-parent">
+      <Header myStyle={myStyle} like={like}></Header>
+      <SideBar myStyle={myStyle} setMyStyle={setMyStyle} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange}></SideBar>
+      <MainArea myStyle={myStyle}></MainArea>
+      <Footer onlyTextChange={onlyTextChange} handleLikeClick={handleLikeClick}></Footer>
+    </div>
+  )
+}
+export default App
